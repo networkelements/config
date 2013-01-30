@@ -1,0 +1,168 @@
+{
+  "name": "Chrome Keyconfig",
+  "version": "1.13.1",
+  "normal_actions": {
+    "t t": {
+      "name": "toggle pin tab",
+      "args": []
+    },
+    "j": {
+      "name": "scroll down",
+      "args": []
+    },
+    "k": {
+      "name": "scroll up",
+      "args": []
+    },
+    "h": {
+      "name": "scroll left",
+      "args": []
+    },
+    "l": {
+      "name": "scroll right",
+      "args": []
+    },
+    "M-J": {
+      "name": "scroll to bottom",
+      "args": []
+    },
+    "M-K": {
+      "name": "scroll to top",
+      "args": []
+    },
+    "a a": {
+      "name": "focus first text input",
+      "args": []
+    },
+    "C-d": {
+      "name": "navigate form elements forward",
+      "args": []
+    },
+    "c o n f i g": {
+      "name": "Keyconfig",
+      "args": []
+    },
+    "i i": {
+      "name": "select right tab",
+      "args": []
+    },
+    "u u": {
+      "name": "select left tab",
+      "args": []
+    },
+    "b b": {
+      "name": "add quickmark",
+      "args": [],
+      "and": false
+    },
+    "M-.": {
+      "name": "go to #1",
+      "args": [
+        "javascript:(function(){var ele=document.createElement('textarea');ele.style.width='100%';ele.value='<blockquote>'+window.getSelection()+'\\n\\n<p class=\"inyo\" align=\"right\">via：<a href=\"'+location.href+'\" target=”_blank”>'+document.title+'</a></p></blockquote>';document.body.insertBefore(ele,document.body.firstChild);ele.focus();ele.select();ele.ondblclick=function(){ele.parentNode.removeChild(ele);};ele.oncopy=function(){setTimeout(function(){ele.parentNode.removeChild(ele);},1);return true;}})()",
+        "quote"
+      ],
+      "and": false
+    },
+    "M-,": {
+      "name": "copy url and title by custom tag #1",
+      "args": [
+        "<a href=\"%URL%\" target=\"_blank\">%TITLE%</a>\n<p class=\"ricty\">[<a href=\"%URL%\" target=\"_blank\">%TITLE%</a>]</p>",
+        "quote with target"
+      ],
+      "and": false
+    },
+    "C-i": {
+      "name": "navigate form elements backward",
+      "args": []
+    },
+    "M-Esc": {
+      "name": "limited mode",
+      "args": []
+    },
+    "M-m": {
+      "name": "hit a hint",
+      "args": [],
+      "and": false
+    },
+    "M-n": {
+      "name": "clone tab",
+      "args": [],
+      "and": false
+    },
+    "/": {
+      "name": "copy url",
+      "args": [],
+      "and": false
+    },
+    "\\": {
+      "name": "copy url and title by custom tag #1",
+      "args": [
+        "%TITLE%\n%URL%",
+        "Copy Title \\n URL"
+      ],
+      "and": false
+    }
+  },
+  "limited_actions": {
+    "M-Esc": {
+      "name": "normal mode",
+      "args": []
+    }
+  },
+  "useTabTitle": false,
+  "smooth_scroll": true,
+  "ldrize": false,
+  "chrome_vim": false,
+  "antiAutoFocus": true,
+  "vim_normal_actions": {
+    "j": {
+      "name": "Down",
+      "args": []
+    },
+    "k": {
+      "name": "Up",
+      "args": []
+    },
+    "h": {
+      "name": "Left",
+      "args": []
+    },
+    "l": {
+      "name": "Right",
+      "args": []
+    },
+    "^": {
+      "name": "Line head",
+      "args": []
+    },
+    "$": {
+      "name": "Line foot",
+      "args": []
+    },
+    "Esc": {
+      "name": "normal mode",
+      "args": []
+    },
+    "i": {
+      "name": "insert mode",
+      "args": []
+    }
+  },
+  "vim_insert_actions": {
+    "Esc": {
+      "name": "normal mode",
+      "args": []
+    }
+  },
+  "vim_default_mode": "insert",
+  "vim_color_config": {
+    "normal": {
+      "background": "gray",
+      "text": "black"
+    },
+    "insert": {
+      "background": "white",
+      "text": "black"
+    }
+  }
+}
