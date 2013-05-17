@@ -6,14 +6,13 @@ add Control = Control_R
 remove Control = Control_L
 keycode 102 = Control_L
 add Control = Control_L
-
-//ここで変更できない　xmodmapにバグ？？ kateから変更するとおかしくなるし
+!!ここで変更できない　xmodmapにバグ？？ kateから変更するとおかしくなるし
 !!keycode101 =  -> keycode 49 = Zenkaku_Hankaku
 !!keycode101 = Zenkaku_Hankaku
 
 !!keycode101 = Hiragana_Katakana -> keycode 49 = Henkan_Mode
 !!keycode101 = Henkan_Mode
 
-//ひらがなカタカナを変更できないのでこちらも不可能
+!!ひらがなカタカナを変更できないのでこちらも不可能
 !!keycode 49 = Zenkaku_Hankaku -> keycode 135 = Menu
 !!keycode 49 = Menu
