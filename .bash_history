@@ -13,7 +13,7 @@ mount -t ext4 /dev/sda5 /mnt/gentoo/
 mkdir /mnt/gentoo/boot
 mount -t ext2 /dev/sda1 /mnt/gentoo/boot
 mkdir -p /mnt/gentoo/home/
-mount -t btrfs /dev/sda6 /mnt/gentoo/home/
+mount -t ext4 /dev/sda6 /mnt/gentoo/home/
 swapon /dev/sda7
 cd /mnt/gentoo/
 wget http://gentoo.channelx.biz/releases/amd64/current-stage3/stage3-amd64-20130627.tar.bz2
