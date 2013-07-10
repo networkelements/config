@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# /etc/X11/xinit/xinitrc
+#
+# global xinitrc file, used by all X sessions started by xinit (startx)
+
+# invoke global X session script
+. /etc/X11/Xsession
+
+
+% cat /mnt/gentoo/etc/X11/xinit/xinputrc
+# im-config(8) generated on Sat, 26 Jun 2010 11:41:39 +0900
+run_im default
+# im-config signiture: b4adf8baabbc92cf765f58e30f74c5e5  -
