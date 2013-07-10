@@ -31,3 +31,4 @@ time emerge -uDN world
 nano -w /etc/ssh/sshd_config
 wget https://raw.github.com/bleuscr/config/master/etc/ssh/sshd_config -O /etc/ssh/sshd_config
 netstat -lnp
+xclip -sel clip < /var/log/portage/elog/summary.log
