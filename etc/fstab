@@ -11,17 +11,18 @@
 # See the manpage fstab(5) for more information.
 #
 
-# <fs>                  <mountpoint>    <type>          <opts>          <dump/pass>
-
-# NOTE: If your BOOT partition is ReiserFS, add the notail option to opts.
-/dev/sda1               /boot           ext2            noauto,noatime  1 2
-/dev/sda2               /               ext4            noatime         0 1
-/dev/sda3               /home           ext4            noatime         0 2
-#defaults,subvol=@home
-/dev/cdrom              /mnt/cdrom      auto            noauto,ro       0 0
-#/dev/SWAP              none            swap            sw              0 0
-#/dev/fd0               /mnt/floppy     auto            noauto          0 0
-#/dev/zram0              swap                    swap            pri=16383                                                       0 0
-#/dev/zram1              swap                    swap            pri=16383                                                       0 0
-#/dev/zram2              /tmp                    ext4            defaults                                                        0 0
-#/dev/zram3              /tmp                    ext4            defaults                                                        0 0
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+# / was on /dev/sda5 during installation
+UUID=e1041fe7-2156-44ed-8b64-893ff7ef014d /               ext4    errors=remount-ro 0       1
+# /boot was on /dev/sda1 during installation
+UUID=77e96cf8-70f1-4163-88a6-14182e8767f5 /boot           ext2    defaults        0       2
+# /home was on /dev/sda6 during installation
+UUID=89bc3114-a5be-4ae4-b1b0-d406f81fea3e /home           ext4    defaults        0       2
+# swap was on /dev/sda7 during installation
+UUID=28eaf68c-b2f0-4b78-99f8-477e26996d11 none            swap    sw              0       0
