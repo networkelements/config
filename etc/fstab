@@ -26,3 +26,6 @@ UUID=77e96cf8-70f1-4163-88a6-14182e8767f5 /boot           ext2    defaults      
 UUID=89bc3114-a5be-4ae4-b1b0-d406f81fea3e /home           ext4    defaults        0       2
 # swap was on /dev/sda7 during installation
 UUID=28eaf68c-b2f0-4b78-99f8-477e26996d11 none            swap    sw              0       0
+
+#testing
+shm             /dev/shm        tmpfs     nodev,nosuid,noexec  0 0
