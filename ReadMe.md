@@ -3,20 +3,38 @@
 # Zshのオススメ設定集 #
 
 ## 使い方(ubuntuの場合) ##
+	$ sudo add-apt-repository ppa:japaneseteam/ppa
+	$ sudo ufw status
+	$ sudo ufw enable
+	$ sudo apt-get update;sudo apt-get dist-upgrade -y
+	$ sudo apt-get install aptitude aria2 build-essential byobu curl emacs24-nox emacs-mozc fbterm fcitx-mozc flashplugin-installer fonts-vlgothic gdisk git-core git-doc git-gui git-svn gparted jhead kde-l10n-ja ktorrent language-pack-kde-ja language-pack-gnome-ja lib32z1 lib32ncurses5 lib32bz2-1.0 lib32nss-mdns libvirt-bin mikutter mozc-server mozc-utils-gui openjdk-7-jdk openssh-client p7zip-rar p7zip-full parted prelink preload qemu-kvm sakura scala sysv-rc-conf ttf-vlgothic tmux ubuntu-restricted-extras ufw unzip unrar uim-fep  uim-xim tilda vim-nox virt-manager virtualbox vlc w3m wine xclip zram-config zsh
+	$ sudo apt-get update;sudo apt-get dist-upgrade -y
+	$ sudo apt-get autoclean
+	$ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb ~/Donwloads
+	$ sudo wget https://raw.github.com/efr700/config/master/etc/default/preload -O /etc/default/preload
+	$ sudo service preload restart
+	$ wget https://raw.github.com/efr700/config/master/.xmodmap ~/.xmodmap
+	$ xmodmap ~/.xmodmap
+	$ LANG=ja_JP.UTF-8 ; export LANG
 	$ echo $SHELL
-	$ sudo apt-get update;sudo apt-get install zsh
+	$ zsh --version
+	$ which zsh
 	$ cat /etc/passwd|tail -3
 	$ chsh -s /usr/bin/zsh
 	$ sudo mkdir /ramdisk
 	$ sudo chmod 777 /ramdisk
-	$ sudo echo /dev/shm /ramdisk	tmpfs	size=8g	0	0 >> /etc/fstab
+	$ sudo echo /dev/shm /ramdisk   tmpfs   size=8g 0   0 >> /etc/fstab
 	$ sudo reboot
+	% cat /proc/swaps
+	% dmesg | grep zram
+	% sudo swapon -s
 	% echo $SHELL
 	% cat /etc/passwd|tail -3
 	% cat /etc/mtab
 	% git clone https://github.com/efr700/zsh.d.git ~/.zsh.d
 	% echo "source ~/.zsh.d/zshrc" > ~/.zshrc
 	% echo "source ~/.zsh.d/zshenv" > ~/.zshenv
+	% sudo sysv-rc-conf
 
 ## カスタマイズ ##
 
