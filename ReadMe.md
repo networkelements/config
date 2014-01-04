@@ -1,3 +1,4 @@
+<!-- -*- gfm -*- -->
 ## UbuntuMinimal install後に実行するコマンド ##
 Installation/MinimalCD - Community Ubuntu Documentation
 (https://help.ubuntu.com/community/Installation/MinimalCD)
