@@ -3,10 +3,6 @@
 # Zshのオススメ設定集 #
 
 ## UbuntuMinimal install後に実行するコマンド ##
-Installation/MinimalCD - Community Ubuntu Documentation
-(https://help.ubuntu.com/community/Installation/MinimalCD)
-Ubuntu 13.04の最小(CUI)インストールメモ: φ(..)メモメモ
-(http://smiyaz.cocolog-nifty.com/blog/2013/06/ubuntu-1304-a07.html)
 	$ sudo add-apt-repository ppa:japaneseteam/ppa
 	$ sudo ufw status
 	$ sudo ufw enable
