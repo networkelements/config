@@ -5,7 +5,7 @@
 	$ sudo ufw status
 	$ sudo ufw enable
 	$ sudo apt-get update;sudo apt-get dist-upgrade -y
-	$ sudo apt-get install aptitude aria2 build-essential byobu curl emacs24-nox emacs-mozc fbterm fcitx-mozc flashplugin-installer fonts-vlgothic gdisk git-core git-doc git-gui git-svn gparted jhead kde-l10n-ja ktorrent language-pack-kde-ja language-pack-gnome-ja lib32z1 lib32ncurses5 lib32bz2-1.0 lib32nss-mdns libvirt-bin mikutter mozc-server mozc-utils-gui openjdk-7-jdk openssh-client p7zip-rar p7zip-full parted prelink preload qemu-kvm sakura scala sysv-rc-conf ttf-vlgothic tmux ubuntu-restricted-extras ufw unzip unrar uim-fep  uim-xim tilda vim-nox virt-manager virtualbox vlc w3m wine xclip zram-config zsh
+	$ sudo apt-get install aptitude aria2 apt-btrfs-snapshot btrfs-tools build-essential byobu curl emacs24-nox emacs-mozc fbterm fcitx-mozc flashplugin-installer fonts-vlgothic gdisk git-core git-doc git-gui git-svn gparted jhead kde-l10n-ja ktorrent language-pack-kde-ja language-pack-gnome-ja lib32z1 lib32ncurses5 lib32bz2-1.0 lib32nss-mdns libvirt-bin mikutter mozc-server mozc-utils-gui openjdk-7-jdk openssh-client p7zip-rar p7zip-full parted prelink preload qemu-kvm sakura scala sysv-rc-conf ttf-vlgothic tmux ubuntu-restricted-extras ufw unzip unrar uim-fep  uim-xim tilda vim-nox virt-manager virtualbox vlc w3m wine xclip zram-config zsh
 	$ sudo apt-get update;sudo apt-get dist-upgrade -y
 	$ sudo apt-get autoclean
 	$ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb ~/Donwloads
@@ -72,7 +72,7 @@
 	$ sudo sdiff /etc/ssh/sshd_config /etc/ssh/sshd_config_test
 	$ sudo wget https://raw.github.com/efr700/config/master/etc/ssh/Ubuntu-s/sshd_config -O /etc/ssh/sshd_config
 	$ sudo service ssh restart
-	$ sudo apt-get install aptitude aria2 emacs24-nox emacs-mozc fbterm fetchmail git fonts-vlgothic openssh-server preload prelink rtorrent samba sysv-rc-conf tmux  ttf-vlgothic uim-fep uim-mozc vim-nox w3m zram-config zsh
+	$ sudo apt-get install aptitude aria2 apt-btrfs-snapshot btrfs-tools emacs24-nox emacs-mozc fbterm fetchmail gdisk git fonts-vlgothic openssh-server preload prelink rtorrent samba sysv-rc-conf tmux  ttf-vlgothic uim-fep uim-mozc vim-nox w3m zram-config zsh
 	$ sudo apt-get update;sudo apt-get dist-upgrade -y
 	$ sudo apt-get autoclean
 	$ sudo wget https://raw.github.com/efr700/config/master/etc/default/preload -O /etc/default/preload
