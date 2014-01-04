@@ -72,7 +72,7 @@
 	$ sudo sdiff /etc/ssh/sshd_config /etc/ssh/sshd_config_test
 	$ sudo wget https://raw.github.com/efr700/config/master/etc/ssh/Ubuntu-s/sshd_config -O /etc/ssh/sshd_config
 	$ sudo service ssh restart
-	$ sudo apt-get install aptitude aria2 emacs24-nox emacs-mozc fbterm fetchmail git fonts-vlgothic openssh-server rtorrent samba sysv-rc-conf tmux  ttf-vlgothic uim-fep uim-mozc vim-nox w3m zram-config zsh
+	$ sudo apt-get install aptitude aria2 emacs24-nox emacs-mozc fbterm fetchmail git fonts-vlgothic openssh-server preload prelink rtorrent samba sysv-rc-conf tmux  ttf-vlgothic uim-fep uim-mozc vim-nox w3m zram-config zsh
 	$ sudo apt-get update;sudo apt-get dist-upgrade -y
 	$ sudo apt-get autoclean
 	$ sudo wget https://raw.github.com/efr700/config/master/etc/default/preload -O /etc/default/preload
