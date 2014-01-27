@@ -9,9 +9,9 @@
 	$ sudo apt-get update;sudo apt-get dist-upgrade -y
 	$ sudo apt-get autoclean
 	$ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb ~/Donwloads
-	$ sudo wget https://raw.github.com/efr700/config/master/etc/default/preload -O /etc/default/preload
+	$ sudo wget https://raw.github.com/neplus/config/master/etc/default/preload -O /etc/default/preload
 	$ sudo service preload restart
-	$ wget https://raw.github.com/efr700/config/master/.xmodmap ~/.xmodmap
+	$ wget https://raw.github.com/neplus/config/master/.xmodmap ~/.xmodmap
 	$ xmodmap ~/.xmodmap
 	$ LANG=ja_JP.UTF-8 ; export LANG
 	$ echo $SHELL
@@ -30,7 +30,7 @@
 	% echo $SHELL
 	% cat /etc/passwd|tail -3
 	% cat /etc/mtab
-	% git clone https://github.com/efr700/zsh.d.git ~/.zsh.d
+	% git clone https://github.com/neplus/zsh.d.git ~/.zsh.d
 	% echo "source ~/.zsh.d/zshrc" > ~/.zshrc
 	% echo "source ~/.zsh.d/zshenv" > ~/.zshenv
 	% sudo sysv-rc-conf
@@ -43,16 +43,16 @@
 	$ sudo ufw app list
 	$ sudo apt-get update;sudo apt-get dist-upgrade -y
 	$ sudo apt-get install openssh-server
-	$ sudo wget https://raw.github.com/efr700/config/master/etc/network/interfaces -O /etc/network/interfaces_test
+	$ sudo wget https://raw.github.com/neplus/config/master/etc/network/interfaces -O /etc/network/interfaces_test
 	// em0がeth0になっていた時期があったのでまたどこ関わる可能性もあるので必ず確認
 	$ sudo sdiff /etc/network/interfaces /etc/network/interfaces_test
 	// 問題がなさそうであれば上書きする
-	$ sudo wget https://raw.github.com/efr700/config/master/etc/network/interfaces -O /etc/network/interfaces
-	$ sudo wget https://raw.github.com/efr700/config/master/etc/sysctl.conf -O /etc/sysctl.conf_test
+	$ sudo wget https://raw.github.com/neplus/config/master/etc/network/interfaces -O /etc/network/interfaces
+	$ sudo wget https://raw.github.com/neplus/config/master/etc/sysctl.conf -O /etc/sysctl.conf_test
 	//同じように差分を確認
 	$ sudo sdiff /etc/sysctl.conf /etc/sysctl.conf_test
 	// 問題がなさそうであれば上書きする
-	$ sudo wget https://raw.github.com/efr700/config/master/etc/sysctl.conf -O /etc/sysctl.conf
+	$ sudo wget https://raw.github.com/neplus/config/master/etc/sysctl.conf -O /etc/sysctl.conf
 	$ sudo /etc/init.d/networking restart
 	$ sudo service network restart
 	$ sudo reboot
@@ -68,7 +68,7 @@
 	$ ssh-copy-id "username"@192.168.1.254
 	// 公開鍵でサーバーへlogin
 	$ ssh -C "username"@192.168.1.254
-	$ sudo wget https://raw.github.com/efr700/config/master/etc/ssh/Ubuntu-s/sshd_config -O /etc/ssh/sshd_config_test
+	$ sudo wget https://raw.github.com/neplus/config/master/etc/ssh/Ubuntu-s/sshd_config -O /etc/ssh/sshd_config_test
 	$ sudo sdiff /etc/ssh/sshd_config /etc/ssh/sshd_config_test
 	$ sudo wget https://raw.github.com/efr700/config/master/etc/ssh/Ubuntu-s/sshd_config -O /etc/ssh/sshd_config
 	$ sudo service ssh restart
@@ -95,7 +95,7 @@
 	% echo $SHELL
 	% cat /etc/passwd|tail -3
 	% cat /etc/mtab
-	% git clone https://github.com/efr700/zsh.d.git ~/.zsh.d
+	% git clone https://github.com/neplus/zsh.d.git ~/.zsh.d
 	% echo "source ~/.zsh.d/zshrc" > ~/.zshrc
 	% echo "source ~/.zsh.d/zshenv" > ~/.zshenv
 	% sudo sysv-rc-conf
