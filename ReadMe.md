@@ -1,19 +1,28 @@
 <!-- -*- gfm -*- -->
 
 ## UbuntuMinimal install後に実行するコマンド ##
-	$ sudo add-apt-repository ppa:japaneseteam/ppa
+	;; sudo add-apt-repository ppa:japaneseteam/ppa
+	$ mv ~/ドキュメント ~/Documents
+	$ mv ~/デスクトップ ~/Desktops
+	$ mv ~/ダウンロード~/Downloads
+	$ mv ~/音楽 ~/Music
+	$ mv ~/ピクチャ ~/Pictures
+	$ mv ~/ビデオ ~/Videos
+	$ mv ~/公開 ~/Public
+	
 	$ sudo ufw status
 	$ sudo ufw enable
-	$ sudo apt-get update;sudo apt-get dist-upgrade -y
-	$ sudo apt-get install aptitude aria2 apt-btrfs-snapshot btrfs-tools build-essential byobu curl emacs24-nox emacs-mozc fbterm fcitx-mozc flashplugin-installer fonts-vlgothic gdisk git-core git-doc git-gui git-svn gparted jhead kde-l10n-ja ktorrent language-pack-kde-ja language-pack-gnome-ja lib32z1 lib32ncurses5 lib32bz2-1.0 lib32nss-mdns libvirt-bin mikutter mozc-server mozc-utils-gui openjdk-7-jdk openssh-client p7zip-rar p7zip-full parted prelink preload qemu-kvm sakura scala sysv-rc-conf ttf-vlgothic tmux ubuntu-restricted-extras ufw unzip unrar uim-fep  uim-xim tilda vim-nox virt-manager virtualbox vlc w3m wine xclip zram-config zsh
-	$ sudo apt-get update;sudo apt-get dist-upgrade -y
-	$ sudo apt-get autoclean
-	$ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb ~/Donwloads
-	$ sudo wget https://raw.github.com/neplus/config/master/etc/default/preload -O /etc/default/preload
-	$ sudo service preload restart
 	$ wget https://raw.github.com/neplus/config/master/.xmodmap ~/.xmodmap
 	$ xmodmap ~/.xmodmap
 	$ LANG=ja_JP.UTF-8 ; export LANG
+	$ sudo apt-get update;sudo apt-get dist-upgrade -y
+	$ sudo apt-get install aptitude aria2 apt-btrfs-snapshot btrfs-tools build-essential byobu curl emacs24-nox emacs-mozc fbterm flashplugin-installer fonts-vlgothic gdisk git-core git-doc git-gui git-svn gparted jhead kde-l10n-ja ktorrent language-pack-kde-ja language-pack-gnome-ja lib32z1 lib32ncurses5 lib32bz2-1.0 lib32nss-mdns libdigest-whirlpool-perl libvirt-bin mikutter openjdk-7-jdk openssh-client p7zip-rar p7zip-full parted prelink preload qemu-kvm sakura scala tmux ubuntu-restricted-extras ufw unzip unrar uim-fep tilda vim-nox virt-manager virtualbox vlc w3m xclip zram-config zsh
+	$ sudo apt-get update;sudo apt-get dist-upgrade -y
+	$ sudo apt-get autoclean
+
+	$ sudo wget https://raw.github.com/neplus/config/master/etc/default/preload -O /etc/default/preload
+	$ sudo service preload restart
+
 	$ echo $SHELL
 	$ zsh --version
 	$ which zsh
@@ -33,8 +42,11 @@
 	% git clone https://github.com/neplus/zsh.d.git ~/.zsh.d
 	% echo "source ~/.zsh.d/zshrc" > ~/.zshrc
 	% echo "source ~/.zsh.d/zshenv" > ~/.zshenv
-	% sudo sysv-rc-conf
-	
+	% wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb ~/Downloads
+	% cd ~/Downloads
+	% sudo dpkg -i google-chrome-stable_current_amd64.deb
+	;; % sudo apt-get install fcitx-mozc mozc-server mozc-utils-gui uim-xim wine
+	 
 	
 ## UbuntuServer install後に実行するコマンド ##
 	$ sudo ufw status
