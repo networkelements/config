@@ -33,28 +33,28 @@
 	$ sudo reboot
 
 ;;再起動後	
-	> xmodmap ~/.xmodmap
-	> sudo ufw status
-	> cat /proc/swaps
-	> dmesg | grep zram
-	> sudo swapon -s
-	> echo $SHELL
-	> cat /etc/passwd|tail -3
-	> cat /etc/mtab
-;;	> git clone https://github.com/neplus/zsh.d.git ~/.zsh.d
-;;	> echo "source ~/.zsh.d/zshrc" > ~/.zshrc
-;;	> echo "source ~/.zsh.d/zshenv" > ~/.zshenv
-	> wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb ~/Downloads
-	> cd ~/Downloads
-	> sudo dpkg -i google-chrome-stable_current_amd64.deb
-	;; % sudo apt-get install fcitx-mozc mozc-server mozc-utils-gui uim-xim wine
+	$ xmodmap ~/.xmodmap
+	$ sudo ufw status
+	$ cat /proc/swaps
+	$ dmesg | grep zram
+	$ sudo swapon -s
+	$ echo $SHELL
+	$ cat /etc/passwd|tail -3
+	$ cat /etc/mtab
+;;	$ git clone https://github.com/neplus/zsh.d.git ~/.zsh.d
+;;	$ echo "source ~/.zsh.d/zshrc" > ~/.zshrc
+;;	$ echo "source ~/.zsh.d/zshenv" > ~/.zshenv
+	$ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb ~/Downloads
+	$ cd ~/Downloads
+	$ sudo dpkg -i google-chrome-stable_current_amd64.deb
+	;; $ sudo apt-get install fcitx-mozc mozc-server mozc-utils-gui uim-xim wine
 	
 ;;不要カーネル削除	
-	> sudo apt-get update;sudo apt-get dist-upgrade -y
-	> sudo apt-get autoremove
-	> bash
+	$ sudo apt-get update;sudo apt-get dist-upgrade -y
+	$ sudo apt-get autoremove
+	$ bash
 	$ dpkg -l 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d' | xargs sudo apt-get -y purge
-	> fish
+	$ fish
 	 
 	
 ## UbuntuServer install後に実行するコマンド ##
