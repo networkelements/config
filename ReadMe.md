@@ -1,22 +1,21 @@
 <!-- -*- gfm -*- -->
 
 ## UbuntuMinimal install後に実行するコマンド ##
-	;; sudo add-apt-repository ppa:japaneseteam/ppa
-	$ mv ~/ドキュメント ~/Documents
-	$ mv ~/デスクトップ ~/Desktops
-	$ mv ~/ダウンロード~/Downloads
-	$ mv ~/音楽 ~/Music
-	$ mv ~/ピクチャ ~/Pictures
-	$ mv ~/ビデオ ~/Videos
-	$ mv ~/公開 ~/Public
-	
+	$ LANG=C; xdg-user-dirs-gtk-update
 	$ sudo ufw status
 	$ sudo ufw enable
 	$ wget https://raw.github.com/neplus/config/master/.xmodmap ~/.xmodmap
 	$ xmodmap ~/.xmodmap
+	$ cp /etc/X11/xinit/xinitrc ~/.xinitrc
+	$ echo xmodmap ~/.xmodmap >> ~/.xinitrc
 	$ LANG=ja_JP.UTF-8 ; export LANG
+
+;;	$ add-apt-repository ppa:tsvetko.tsvetkov/cinnamon
+	$ sudo add-apt-repository ppa:japaneseteam/ppa
+	$ add-apt-repository ppa:tuxpoldo/btsync
+	$ sudo apt-get purge unity-lens-video unity-scope-video-remote unity-lens-music unity-lens-photos
 	$ sudo apt-get update;sudo apt-get dist-upgrade -y
-	$ sudo apt-get install aptitude aria2 apt-btrfs-snapshot btrfs-tools build-essential byobu curl emacs24-nox emacs-mozc fbterm flashplugin-installer fonts-vlgothic gdisk git-core git-doc git-gui git-svn gparted jhead kde-l10n-ja ktorrent language-pack-kde-ja language-pack-gnome-ja lib32z1 lib32ncurses5 lib32bz2-1.0 lib32nss-mdns libdigest-whirlpool-perl libvirt-bin mikutter openjdk-7-jdk openssh-client p7zip-rar p7zip-full parted prelink preload qemu-kvm sakura scala tmux ubuntu-restricted-extras ufw unzip unrar uim-fep tilda vim-nox virt-manager virtualbox vlc w3m xclip zram-config zsh
+	$ sudo apt-get install aptitude aria2 apt-btrfs-snapshot btrfs-tools btsync build-essential byobu curl emacs24-nox emacs-mozc fbterm flashplugin-installer fonts-vlgothic gdisk git-core git-doc git-gui git-svn gparted jhead kde-l10n-ja ktorrent language-pack-kde-ja language-pack-gnome-ja lib32z1 lib32ncurses5 lib32bz2-1.0 lib32nss-mdns libdigest-whirlpool-perl libvirt-bin lm-sensors mikutter openjdk-7-jdk openssh-client p7zip-rar p7zip-full parted prelink preload qemu-kvm sakura scala smartmontools tmux ubuntu-restricted-extras ufw unzip unrar uim-fep testdisk tilda vim-nox virt-manager virtualbox vlc w3m xclip zram-config fish
 	$ sudo apt-get update;sudo apt-get dist-upgrade -y
 	$ sudo apt-get autoclean
 
@@ -24,28 +23,38 @@
 	$ sudo service preload restart
 
 	$ echo $SHELL
-	$ zsh --version
-	$ which zsh
+	$ fish --version
+	$ which fish
 	$ cat /etc/passwd|tail -3
-	$ chsh -s /usr/bin/zsh
+	$ chsh -s /usr/bin/fish
 	$ sudo mkdir /ramdisk
 	$ sudo chmod 777 /ramdisk
 	$ sudo echo /dev/shm /ramdisk   tmpfs   size=8g 0   0 >> /etc/fstab
 	$ sudo reboot
-	% sudo ufw status
-	% cat /proc/swaps
-	% dmesg | grep zram
-	% sudo swapon -s
-	% echo $SHELL
-	% cat /etc/passwd|tail -3
-	% cat /etc/mtab
-	% git clone https://github.com/neplus/zsh.d.git ~/.zsh.d
-	% echo "source ~/.zsh.d/zshrc" > ~/.zshrc
-	% echo "source ~/.zsh.d/zshenv" > ~/.zshenv
-	% wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb ~/Downloads
-	% cd ~/Downloads
-	% sudo dpkg -i google-chrome-stable_current_amd64.deb
+
+;;再起動後	
+	> xmodmap ~/.xmodmap
+	> sudo ufw status
+	> cat /proc/swaps
+	> dmesg | grep zram
+	> sudo swapon -s
+	> echo $SHELL
+	> cat /etc/passwd|tail -3
+	> cat /etc/mtab
+;;	> git clone https://github.com/neplus/zsh.d.git ~/.zsh.d
+;;	> echo "source ~/.zsh.d/zshrc" > ~/.zshrc
+;;	> echo "source ~/.zsh.d/zshenv" > ~/.zshenv
+	> wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb ~/Downloads
+	> cd ~/Downloads
+	> sudo dpkg -i google-chrome-stable_current_amd64.deb
 	;; % sudo apt-get install fcitx-mozc mozc-server mozc-utils-gui uim-xim wine
+	
+;;不要カーネル削除	
+	> sudo apt-get update;sudo apt-get dist-upgrade -y
+	> sudo apt-get autoremove
+	> bash
+	$ dpkg -l 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d' | xargs sudo apt-get -y purge
+	> fish
 	 
 	
 ## UbuntuServer install後に実行するコマンド ##
