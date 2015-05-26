@@ -1,4 +1,4 @@
-~> wget https://gist.github.com/neplus/bdcc899188f5b695edd6/download ; tar xvf gist\*.tar.gz ; cd gist\*/ ; chmod +x kubuntu1504setup.sh
+~> wget https://gist.githubusercontent.com/neplus/bdcc899188f5b695edd6/raw/97f594ecbdf71ae582a7779d2c6f3ca6cb246f5a/kubuntu1504setup.sh; chmod +x kubuntu1504setup.sh
 
 ~> ./kubuntu1504setup.sh
 
