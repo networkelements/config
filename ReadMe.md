@@ -6,7 +6,7 @@
 
 ~> wget https://raw.githubusercontent.com/neplus/config/master/ubuntu1404_lts_ja_setup.sh;chmod +x ubuntu1404_lts_ja_setup.sh
 
-~> ubuntu1404_lts_ja_setup.sh
+~> ./ubuntu1404_lts_ja_setup.sh
 
 //LUKS
 https://gist.github.com/neplus/fbcd85f33f8863d1bcae
