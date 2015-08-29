@@ -3,6 +3,7 @@
 ~> ./kubuntu1504setup.sh
 
 //for Ubuntu japanese team edition, ubuntu 14.04 LTS install script
+
 ~> wget https://raw.githubusercontent.com/neplus/config/master/ubuntu1404_lts_ja_setup.sh;chmod +x ubuntu1404_lts_ja_setup.sh
 
 ~> ubuntu1404_lts_ja_setup.sh
