@@ -11,4 +11,6 @@
 #
 # By default this script does nothing.
 mount -t tmpfs -o size=6g /dev/shm /mnt/ramdisk
+/usr/bin/clamfs　/etc/clamfs.xml
+/usr/bin/clamfs　/etc/clamfs_home.xml
 exit 0
