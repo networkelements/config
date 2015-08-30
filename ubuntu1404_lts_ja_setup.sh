@@ -80,7 +80,7 @@ sudo update-rc.d privoxy enable
 mkdir -p ~/0/0btsync
 sudo apt-get install btsync
 sudo chmod 775 ~/0/0btsync
-sudo chown manon:btsync ~/0/0btsync
+sudo chown neplus:btsync ~/0/0btsync
 ##googlechrome
 aria2c https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
