@@ -53,7 +53,7 @@ sudo clamfs /etc/clamfs_home.xml
 ## freshclam and make ramdisk
 sudo wget https://raw.githubusercontent.com/neplus/config/master/etc/rc.local -O /etc/rc.local
 sudo mkdir /ramdisk
-chmod 777 /ramdisk
+sudo chmod 770 /ramdisk
 #chmod 777 /ramdisk;echo /dev/shm /ramdisk   tmpfs   size=8g 0   0 >> /etc/fstab;
 #sudo nano /etc/fstab
 ###http://www.atmarkit.co.jp/flinux/rensai/linuxtips/930clamavdbup.html
