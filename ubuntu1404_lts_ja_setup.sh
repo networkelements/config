@@ -6,6 +6,9 @@ sudo ufw default deny
 sudo add-apt-repository ppa:japaneseteam/ppa
 sudo add-apt-repository ppa:tuxpoldo/btsync
 sudo add-apt-repository ppa:ubuntu-mozilla-daily/firefox-aurora
+###http://orebibou.com/2014/10/apt-get%E3%82%92%E3%82%88%E3%82%8A%E9%AB%98%E9%80%9F%E3%81%AB%EF%BC%81%E3%80%8Eapt-fast%E3%80%8F%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89/
+###https://github.com/ilikenwf/apt-fast
+sudo add-apt-repository ppa:saiarcot895/myppa
 #wget -q https://www.ubuntulinux.jp/ubuntu-ja-archive-keyring.gpg -O- | sudo apt-key add -
 #wget -q https://www.ubuntulinux.jp/ubuntu-jp-ppa-keyring.gpg -O- | sudo apt-key add -
 #sudo wget https://www.ubuntulinux.jp/sources.list.d/vivid.list -O /etc/apt/sources.list.d/ubuntu-ja.list
@@ -15,7 +18,10 @@ sudo add-apt-repository ppa:ubuntu-mozilla-daily/firefox-aurora
 sudo apt-get purge unity-scope-* unity-lens-video unity-scope-video-remote unity-lens-music unity-lens-photos -y
 sudo apt-get update ; sudo apt-get dist-upgrade -y
 #sudo apt-get install aptitude aria2 byobu curl emacs24-nox stunnel4 mew mew-bin ca-certificates emacs-mozc fbterm fcitx-mozc fish flashplugin-installer gdisk git-core git-doc git-gui git-svn gparted hdparm htop procps glances kate kde-baseapps kde-base-artwork kde-config-fcitx kde-l10n-ja ktorrent language-pack-kde-ja language-pack-gnome-ja libfcitx-qt5-1 mozc-server mozc-utils-gui openssh-client parted smartmontools tmux ufw unzip unrar uim-fep uim-xim vim-nox virtualbox vlc xclip wine fish 
-sudo apt-get install kubuntu-desktop aptitude aria2 apt-btrfs-snapshot bleachbit btrfs-tools btsync build-essential byobu ca-certificates chkrootkit comix curl docker.io vim-syntax-docker emacs24-nox emacs-mozc fbterm fcitx-mozc fish flashplugin-installer fonts-inconsolata fonts-takao gdisk git-core git-doc git-gui git-svn glances gparted haskell-platform hdparm htop krita jhead procps glances kate kde-baseapps kde-base-artwork kde-l10n-ja keepass2 ktorrent language-pack-kde-ja language-pack-gnome-ja lib32z1 lib32ncurses5 lib32nss-mdns libdigest-whirlpool-perl libvirt-bin lm-sensors lynx mew mew-bin mozc-server mozc-utils-gui openjdk-7-jdk openssh-client p7zip-rar p7zip-full parted prelink preload privoxy procps pwgen python-software-properties qemu-kvm rkhunter rsync smartmontools stunnel4 testdisk tmux tor tree ubuntu-restricted-extras ufw unzip unrar uim-fep uim-xim vagrant vidalia vim-nox  virt-manager virtualbox vlc xclip wine zram-config -y
+sudo apt-get install apt-fast aria2
+sudo wget https://raw.githubusercontent.com/neplus/config/master/etc/apt-fast.conf -O /etc/apt-fast.conf
+sudo apt-fast install kubuntu-desktop aptitude aria2 apt-btrfs-snapshot bleachbit btrfs-tools btsync build-essential byobu ca-certificates chkrootkit comix curl docker.io vim-syntax-docker emacs24-nox emacs-mozc fbterm fcitx-mozc fish flashplugin-installer fonts-inconsolata fonts-takao gdisk git-core git-doc git-gui git-svn glances gparted haskell-platform hdparm htop krita jhead procps glances kate kde-baseapps kde-base-artwork kde-l10n-ja keepass2 ktorrent language-pack-kde-ja language-pack-gnome-ja lib32z1 lib32ncurses5 lib32nss-mdns libdigest-whirlpool-perl libvirt-bin lm-sensors lynx mew mew-bin mozc-server mozc-utils-gui openjdk-7-jdk openssh-client p7zip-rar p7zip-full parted prelink preload privoxy procps pwgen python-software-properties qemu-kvm rsync smartmontools stunnel4 testdisk tmux tor tree ubuntu-restricted-extras ufw unzip unrar uim-fep uim-xim vagrant vidalia vim-nox  virt-manager virtualbox vlc xclip wine zram-config -y
+#rkhunter
 #aptitude aria2 apt-btrfs-snapshot btrfs-tools btsync build-essential byobu ca-certificates curl emacs24-nox emacs-mozc fbterm fcitx-mozc fish flashplugin-installer gdisk git-core git-doc git-gui git-svn glances gparted hdparm htop jhead procps glances kate kde-baseapps kde-base-artwork kde-l10n-ja ktorrent language-pack-kde-ja language-pack-gnome-ja libfcitx-qt5-1 lib32z1 lib32ncurses5 lib32bz2-1.0 lib32nss-mdns libdigest-whirlpool-perl libvirt-bin lm-sensors mew mew-bin mozc-server mozc-utils-gui openjdk-7-jdk openssh-client p7zip-rar p7zip-full parted prelink preload procps qemu-kvm smartmontools stunnel4 testdisk tmux ubuntu-restricted-extras ufw unzip unrar uim-fep uim-xim vim-nox  virt-manager virtualbox vlc xclip wine zram-config
 sudo apt-get update ; sudo apt-get dist-upgrade -y
 #sudo apt-get purge dragonplayer kwalletmanager
@@ -45,7 +51,7 @@ sudo cp /etc/clamfs.xml /etc/clamfs_home.xml
 sudo mkdir -p /etc/clamfs/home
 sudo clamfs /etc/clamfs_home.xml
 ## freshclam and make ramdisk
-sudo https://raw.githubusercontent.com/neplus/config/master/etc/rc.local -O /etc/rc.local
+sudo wget https://raw.githubusercontent.com/neplus/config/master/etc/rc.local -O /etc/rc.local
 sudo mkdir /ramdisk
 #chmod 777 /ramdisk;echo /dev/shm /ramdisk   tmpfs   size=8g 0   0 >> /etc/fstab;
 #sudo nano /etc/fstab
@@ -53,7 +59,7 @@ sudo mkdir /ramdisk
 #crontab -e
 #59 * * * * clamav /usr/bin/freshclam -l /var/log/clamav/freshclam.log
 #30 * * * * clamav /usr/bin/freshclam --quiet -l /var/log/freshclam.log
-sudo https://raw.githubusercontent.com/neplus/config/master/etc/crontab -O /etc/crontab
+sudo wget https://raw.githubusercontent.com/neplus/config/master/etc/crontab -O /etc/crontab
 crontab -l
 sudo /etc/init.d/cron restart
 ####Keepass2
@@ -66,7 +72,7 @@ sudo rsync -varshz Japanese.lngx /usr/lib/keepass2/
 wget https://raw.githubusercontent.com/neplus/config/master/.bashrc -O ~/.bashrc
 sudo wget https://raw.githubusercontent.com/neplus/config/master/etc/privoxy/config -O /etc/privoxy/config
 sudo cat /etc/privoxy/config
-sudo service tor restart 
+sudo service tor restart
 sudo service privoxy restart
 sudo update-rc.d tor enable
 sudo update-rc.d privoxy enable
@@ -74,7 +80,7 @@ sudo update-rc.d privoxy enable
 mkdir -p ~/0/0btsync
 sudo apt-get install btsync
 sudo chmod 775 ~/0/0btsync
-sudo chown neplus:btsync ~/0/0btsync
+sudo chown manon:btsync ~/0/0btsync
 ##googlechrome
 aria2c https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
