@@ -16,7 +16,7 @@ alias chrome "google-chrome-stable --disk-cache-dir="\/radmisk" --disable-backgr
 #alias rm="rm -i"
 alias vi "vim"
 
-alias upd "sudo apt-get update"
-alias upg "sudo freshclam;sudo apt-get update;sudo apt-get dist-upgrade -y"
+alias upd "sudo apt-fast update"
+alias upg "sudo freshclam;sudo apt-fast update;sudo apt-fast dist-upgrade -y"
 
 set -g -x PATH /usr/local/bin /usr/local/sbin $PATH
