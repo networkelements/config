@@ -25,7 +25,7 @@ sudo apt-fast install kubuntu-desktop aptitude aria2 apt-btrfs-snapshot bleachbi
 #aptitude aria2 apt-btrfs-snapshot btrfs-tools btsync build-essential byobu ca-certificates curl emacs24-nox emacs-mozc fbterm fcitx-mozc fish flashplugin-installer gdisk git-core git-doc git-gui git-svn glances gparted hdparm htop jhead procps glances kate kde-baseapps kde-base-artwork kde-l10n-ja ktorrent language-pack-kde-ja language-pack-gnome-ja libfcitx-qt5-1 lib32z1 lib32ncurses5 lib32bz2-1.0 lib32nss-mdns libdigest-whirlpool-perl libvirt-bin lm-sensors mew mew-bin mozc-server mozc-utils-gui openjdk-7-jdk openssh-client p7zip-rar p7zip-full parted prelink preload procps qemu-kvm smartmontools stunnel4 testdisk tmux ubuntu-restricted-extras ufw unzip unrar uim-fep uim-xim vim-nox  virt-manager virtualbox vlc xclip wine zram-config
 sudo apt-get update ; sudo apt-get dist-upgrade -y
 #sudo apt-get purge dragonplayer kwalletmanager
-sudo apt-get purge dragonplayer kwalletmanager totem cheese evolution-data-server-common evolution-data-server-online-accounts -y
+sudo apt-get purge dragonplayer seahorse kwalletmanager totem cheese evolution-data-server-common evolution-data-server-online-accounts -y
 sudo apt-get autoclean
 #LANG=C; xdg-user-dirs-gtk-update
 #LANG=C xdg-user-dirs-update --force
