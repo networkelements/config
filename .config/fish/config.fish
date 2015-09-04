@@ -20,3 +20,23 @@ alias upd "sudo apt-fast update"
 alias upg "sudo freshclam;sudo apt-fast update;sudo apt-fast dist-upgrade -y"
 
 set -g -x PATH /usr/local/bin /usr/local/sbin $PATH
+
+
+set RBENV_ROOT $HOME/.rbenv  
+set -g -x PATH /usr/local/bin /usr/local/sbin $PATH  
+alias nano "nano -w"
+
+# rbenv
+set -x PATH $HOME/.rbenv/bin $PATH
+set -x PATH $HOME/.rbenv/shims $PATH
+#rbenv rehash >/dev/null ^&1
+
+set PATH $HOME/.rbenv/bin/rbenv $PATH
+set PATH $HOME/.rbenv/bin/ruby-local-exec $PATH
+eval rbenv init -
+
+#rbenv rehash >/dev/null ^&1
+
+#eval "$(rbenv init -)";
+#export PATH="$HOME/.rbenv/bin:$PATH"
+#eval "$(rbenv init -)"
