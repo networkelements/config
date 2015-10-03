@@ -37,6 +37,11 @@ eval rbenv init -
 
 #rbenv rehash >/dev/null ^&1
 
+set -x PATH $HOME/.cabal/bin $PATH
+set -x PATH $HOME/.cabal/ $PATH
+set PATH $HOME/.cabal/bin $PATH
+set PATH $HOME/.cabal/ $PATH
+
 #eval "$(rbenv init -)";
 #export PATH="$HOME/.rbenv/bin:$PATH"
 #eval "$(rbenv init -)"
