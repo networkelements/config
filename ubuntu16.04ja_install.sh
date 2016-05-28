@@ -22,7 +22,7 @@ sudo add-apt-repository ppa:saiarcot895/myppa
 
 sudo apt-get purge unity-scope-* unity-lens-video unity-scope-video-remote unity-lens-music unity-lens-photos -y
 sudo apt-get update ; sudo apt-get dist-upgrade -y
-sudo apt-get install apt-fast aria2 tasksel
+sudo apt-get install apt-fast aria2 tasksel apt-show-versions
 sudo wget https://raw.githubusercontent.com/neplus/config/master/etc/apt-fast.conf -O /etc/apt-fast.conf
 sudo apt-fast install kubuntu-desktop aptitude aria2 apt-btrfs-snapshot bleachbit btrfs-tools build-essential byobu ca-certificates chkrootkit comix curl fbterm fcitx-mozc flashplugin-installer fonts-inconsolata fonts-takao g++ gdisk glances gparted hdparm htop krita jhead procps glances kate kde-baseapps kde-base-artwork kde-l10n-ja ktorrent language-pack-kde-ja language-pack-gnome-ja lib32z1 lib32ncurses5 lib32nss-mdns libdigest-whirlpool-perl libvirt-bin lm-sensors lynx mew mew-bin mozc-server mozc-utils-gui openssh-client p7zip-rar p7zip-full parted prelink preload privoxy procps pwgen python-software-properties qemu-kvm rsync smartmontools stunnel4 testdisk tmux tor tree ubuntu-restricted-extras ufw unzip unrar uim-fep uim-xim vidalia vim-nox virt-manager vlc xclip wine zram-config -y
 
