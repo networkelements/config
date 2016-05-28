@@ -21,55 +21,144 @@ sudo wget https://www.ubuntulinux.jp/sources.list.d/xenial.list -O /etc/apt/sour
 sudo add-apt-repository ppa:ubuntu-mozilla-daily/firefox-aurora
 ###http://orebibou.com/2014/10/apt-get%E3%82%92%E3%82%88%E3%82%8A%E9%AB%98%E9%80%9F%E3%81%AB%EF%BC%81%E3%80%8Eapt-fast%E3%80%8F%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89/
 ###https://github.com/ilikenwf/apt-fast
-sudo add-apt-repository ppa:saiarcot895/myppa
+#sudo add-apt-repository ppa:saiarcot895/myppa
 
 sudo apt-get purge unity-webapps-common　unity-scope-* unity-lens-video unity-scope-video-remote unity-lens-music unity-lens-photos -y
 sudo apt-get update
-sudo apt-get install apt-fast aria2 tasksel firewalld libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev
-  
-sudo wget https://raw.githubusercontent.com/neplus/config/master/etc/apt-fast.conf -O /etc/apt-fast.conf
+sudo apt-get install aria2 tasksel firewalld libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev libncurses5-dev autoconf
+
+#==========================================================================================================================
+# latest package
+* from official binary
+btsync
+consul
+#git                                       (1:2.7.4-0ubuntu1)              ||  wget https://www.kernel.org/pub/software/scm/git/git-2.8.3.tar.xz
+docker                                    (1.5-1)                         || 1.11.1 https://github.com/docker/docker/blob/master/CHANGELOG.md curl -fsSL https://get.docker.com/gpg | sudo apt-key add -
+virtualbox oracle official             (5.0.18-dfsg-2build1)              || http://download.virtualbox.org/virtualbox/5.0.20/virtualbox-5.0_5.0.20-106931~Ubuntu~xenial_amd64.deb
+
+* cant use apt-get ? use official binary?
+vagrant                                vagrant (1.8.1+dfsg-1)             || wget https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.deb ; sudo dpkg -i vagrant*.deb
+'''
+sudo apt-get -sV install vagrant | grep virt
+   virtualbox (5.0.18-dfsg-2build1)
+'''
+
+https://www.passwordstore.org/          pass (1.6.5-3)                    || The latest version is 1.6.5.
+etckeeper                              etckeeper (1.18.2-1ubuntu1
+
+* use apt-get
+#rkhunter                               rkhunter (1.4.2-5)                 || https://sourceforge.net/projects/rkhunter/files/rkhunter/
+#openjdk-7-jdk or 8 or 9                openjdk-9-jdk (9~b114-0ubuntu1)     
+#qbittorrent                            (3.3.1-1)                          || 3.3.4
+#emacs24-nox emacs-mozc                    (24.5+1-6ubuntu1)               || wget http://public.p-knowledge.co.jp/gnu-mirror/emacs/emacs-24.5.tar.gz.sig
+####http://postd.cc/linux-workstation-security-checklist-part1/
+#keepassx                                (2.0.2)                           || https://github.com/keepassx/keepassx
+#https://www.clamav.net/downloads#collapseUbuntu                           ||    clamav-base (0.99+dfsg-1ubuntu1) clamav-freshclam (0.99+dfsg-1ubuntu1)    libclamav7 (0.99+dfsg-1ubuntu1)    clamav-docs (0.99+dfsg-1ubuntu1)   clamav (0.99+dfsg-1ubuntu1)   clamav-base (0.99+dfsg-1ubuntu1)   clamav-freshclam (0.99+dfsg-1ubuntu1)   libclamav7 (0.99+dfsg-1ubuntu1)
+
+* from github
+vimpager
+netdata
+stack haskell
+fish                                      fish-common (2.2.0-3)           || https://github.com/fish-shell/fish-shell 2.3.0, released April 22, 2016
+#==========================================================================================================================
 
 # install fish
+# https://github.com/fish-shell/fish-shell#autotools-build
+cd $HOME
+aria2c https://fishshell.com/files/2.3.0/fish-2.3.0.tar.gz
+sha1sum fish-*.gz | grep afc6e9ea4cbd1ade63e9af41280b1f08bff23bba
+tar zxvf fish-*.gz
+./configure
+make;sudo make install
+#------------------------------------------------------------------------------------------------------------------------
+wget https://raw.githubusercontent.com/neplus/config/master/.config/fish/config.fish -O ~/.config/fish/config.fish
+fish --version
+FISHPATH=`which fish`
+chsh -s $FISHPATH
+#上記でダメなら追記してからもう一度chsh -sする(スクリプト自体にroot権限が必要？)
+#sudo echo $FISHPATH >> /etc/shells
+# chsh -s $FISHPATH
 
+# logoutしないとかわらない？fishのパスをつけ間違えるとログインできなくなるのでほかにユーザを作ってからsu -ほげ　したほうが良い？
+# sudo useradd test
+# sudo passwd test
+#su - ほげ(このスクリプトを動かしているユーザ名)     ##ここでfishにログインできていることを確認したらuserdel
+# userdel test
+echo $SHELL
 
 #install git 
 cd /usr/local/src;pwd
-aria2c https://www.kernel.org/pub/software/scm/git/git-2.8.3.tar.xz
-tar -zxf git-*.tar.gz
-cd git-*
-make configure
-./configure --prefix=/usr/local/
-make all doc info
-sudo make install install-doc install-html install-info
-
-# install etckeeper
-
-#install apt-fast
-cd /usr/local/src;pwd
-git clone https://github.com/ilikenwf/apt-fast.git
-cd apt-fast
-sudo cp apt-fast /usr/bin/
-sudo chmod +x /usr/bin/apt-fast
-sudo cp apt-fast.conf /etc
+sudo aria2c https://www.kernel.org/pub/software/scm/git/git-2.8.3.tar.xz
+gittarpath=`ls -l | grep git-.tar.`
+sudo tar -Jxvf git-2.8.3.tar.xz
+cd git-2.8.3
+sudo make configure
+sudo ./configure --prefix=/usr/local/
+sudo make all
+#sudo make all doc info
+#```
+#    SUBDIR git-gui
+#    SUBDIR gitk-git
+#    SUBDIR perl
+#Manifying 9 pod documents
+#    SUBDIR templates
+#make -C Documentation all
+#make[1]: ディレクトリ '/usr/local/src/git-2.8.3/Documentation' に入ります
+#make[2]: ディレクトリ '/usr/local/src/git-2.8.3' に入ります
+#make[2]: 'GIT-VERSION-FILE' は更新済みです.
+#make[2]: ディレクトリ '/usr/local/src/git-2.8.3' から出ます
+#    ASCIIDOC git-pack-refs.html
+#/bin/sh: 2: asciidoc: not found
+#Makefile:315: ターゲット 'git-pack-refs.html' のレシピで失敗しました
+#make[1]: *** [git-pack-refs.html] エラー 127
+#make[1]: ディレクトリ '/usr/local/src/git-2.8.3/Documentation' から出ます
+#Makefile:2041: ターゲット 'doc' のレシピで失敗しました
+#make: *** [doc] エラー 2
+#```
+sudo make install
+#sudo make install install-doc install-html install-info
+#```
+#/bin/sh: 2: asciidoc: not found
+#Makefile:332: ターゲット 'git-pack-refs.xml' のレシピで失敗しました
+#make[1]: *** [git-pack-refs.xml] エラー 127
+#make[1]: ディレクトリ '/usr/local/src/git-2.8.3/Documentation' から出ます
+#Makefile:2366: ターゲット 'install-doc' のレシピで失敗しました
+#```
+#-----------------------------------------------------------------------------------------------------------------------
 
 # back home
 cd $HOME;pwd
 
 #copy tools
-https://github.com/networkelements/gittool.git
+git clone https://github.com/networkelements/gittool.git
 cd gittool
 chmod +x *.sh
+ls -l
+
+# install etckeeper
 
 
-sudo apt-fast install aptitude aria2 apt-btrfs-snapshot bleachbit btrfs-tools build-essential byobu ca-certificates chkrootkit comix curl fbterm fcitx-mozc flashplugin-installer fonts-inconsolata fonts-takao g++ gdisk glances gparted hdparm htop krita jhead procps glances kate kde-baseapps kde-base-artwork kde-l10n-ja ktorrent language-pack-kde-ja language-pack-gnome-ja lib32z1 lib32ncurses5 libdigest-whirlpool-perl libvirt-bin lm-sensors lynx mew mew-bin mozc-server mozc-utils-gui openssh-client p7zip-rar p7zip-full parted prelink preload privoxy procps pwgen python-software-properties qemu-kvm rsync smartmontools stunnel4 testdisk tmux tor tree ubuntu-restricted-extras ufw unzip unrar uim-fep uim-xim vim-nox virt-manager vlc xclip wine zram-config libncurses5-dev gettext autoconf ubuntu-defaults-ja ppa-purge rkhunter openjdk-9-jdk qbittorrent emacs24-nox emacs-mozc keepassx tasksel aria2 firewalld clamav
-bash-completion chrony libssl-dev libtool libboost-all-dev pkg-config yasm
+#install apt-fast
+cd /usr/local/src;pwd
+sudo git clone https://github.com/ilikenwf/apt-fast.git
+cd apt-fast
+sudo cp apt-fast /usr/bin/
+sudo chmod +x /usr/bin/apt-fast
+sudo cp apt-fast.conf /etc
+
+sudo wget https://raw.githubusercontent.com/networkelements/config/master/etc/apt-fast.conf -O /etc/apt-fast.conf
+
+# back home
+cd $HOME;pwd
+
+sudo apt-fast install aptitude aria2 apt-btrfs-snapshot bleachbit btrfs-tools build-essential byobu ca-certificates chkrootkit comix curl fbterm fcitx-mozc flashplugin-installer fonts-inconsolata fonts-takao g++ gdisk glances gparted hdparm htop krita jhead procps glances kate kde-baseapps kde-base-artwork kde-l10n-ja ktorrent language-pack-kde-ja language-pack-gnome-ja lib32z1 lib32ncurses5 libdigest-whirlpool-perl libvirt-bin lm-sensors lynx mew mew-bin mozc-server mozc-utils-gui openssh-client p7zip-rar p7zip-full parted prelink preload privoxy procps pwgen python-software-properties qemu-kvm rsync smartmontools stunnel4 testdisk tmux tor tree ubuntu-restricted-extras ufw unzip unrar uim-fep uim-xim vim-nox virt-manager vlc xclip wine zram-config gettext ubuntu-defaults-ja ppa-purge rkhunter openjdk-9-jdk qbittorrent emacs24-nox emacs-mozc keepassx tasksel aria2 firewalld clamav bash-completion chrony libssl-dev libtool libboost-all-dev pkg-config yasm
 
 
 #chinachu
-http://www.jifu-labo.net/2015/09/ubuntu_pre/
+###http://www.jifu-labo.net/2015/09/ubuntu_pre/
 
 #bash-completion chrony libssl-dev libtool libboost-all-dev pkg-config yasm
-sudo vi /etc/chrony/chrony.conf
+sudo nano /etc/chrony/chrony.conf
 
 server ntp.nict.jp iburst minpoll 10 maxpoll 12
 server ntp.mita.keio.ac.jp iburst minpoll 10 maxpoll 12
@@ -165,41 +254,6 @@ sudo service chinachu-wui restart
 
 ★# $HOME/.fontsにコピーを忘れずに
 
-# latest package
-* from official binary
-btsync
-consul
-git                                       (1:2.7.4-0ubuntu1)              ||  wget https://www.kernel.org/pub/software/scm/git/git-2.8.3.tar.xz
-docker                                    (1.5-1)                         || 1.11.1 https://github.com/docker/docker/blob/master/CHANGELOG.md curl -fsSL https://get.docker.com/gpg | sudo apt-key add -
-virtualbox oracle official             (5.0.18-dfsg-2build1)              || http://download.virtualbox.org/virtualbox/5.0.20/virtualbox-5.0_5.0.20-106931~Ubuntu~xenial_amd64.deb
-
-* cant use apt-get ? use official binary?
-vagrant                                vagrant (1.8.1+dfsg-1)             || wget https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.deb ; sudo dpkg -i vagrant*.deb
-'''
-sudo apt-get -sV install vagrant | grep virt
-   virtualbox (5.0.18-dfsg-2build1)
-'''
-
-https://www.passwordstore.org/          pass (1.6.5-3)                    || The latest version is 1.6.5.
-etckeeper                              etckeeper (1.18.2-1ubuntu1
-
-
-* use apt-get
-rkhunter                               rkhunter (1.4.2-5)                 || https://sourceforge.net/projects/rkhunter/files/rkhunter/
-openjdk-7-jdk or 8 or 9                openjdk-9-jdk (9~b114-0ubuntu1)     
-qbittorrent                            (3.3.1-1)                          || 3.3.4
-emacs24-nox emacs-mozc                    (24.5+1-6ubuntu1)               || wget http://public.p-knowledge.co.jp/gnu-mirror/emacs/emacs-24.5.tar.gz.sig
-####http://postd.cc/linux-workstation-security-checklist-part1/
-keepassx                                (2.0.2)                           || https://github.com/keepassx/keepassx
-https://www.clamav.net/downloads#collapseUbuntu                           ||    clamav-base (0.99+dfsg-1ubuntu1) clamav-freshclam (0.99+dfsg-1ubuntu1)    libclamav7 (0.99+dfsg-1ubuntu1)    clamav-docs (0.99+dfsg-1ubuntu1)   clamav (0.99+dfsg-1ubuntu1)   clamav-base (0.99+dfsg-1ubuntu1)   clamav-freshclam (0.99+dfsg-1ubuntu1)   libclamav7 (0.99+dfsg-1ubuntu1)
-
-
-* from github
-vimpager
-netdata
-stack haskell
-fish                                      fish-common (2.2.0-3)           || https://github.com/fish-shell/fish-shell 2.3.0, released April 22, 2016
-
 
 
 sudo apt-get update ; sudo apt-get dist-upgrade -y
@@ -289,10 +343,7 @@ alias chrome="google-chrome-stable --disable-background-mode --disk-cache-size=1
 LANG=C; xdg-user-dirs-gtk-update
 echo $SHELL
 #sudo apt-get install fish
-wget https://raw.githubusercontent.com/neplus/config/master/.config/fish/config.fish -O ~/.config/fish/config.fish
-fish --version
-which fish
-chsh -s /usr/bin/fish
+
 #chsh -s /usr/bin/fish
 #exit
 #im-config
