@@ -1,9 +1,12 @@
   #!/bin/sh
 #script -a install_`date +%Y-%m-%d-%H:%M:%S`.log
-
+date
 # change to firewalld
 #  http://linuxbsdos.com/2014/10/24/replace-ufw-with-firewalld-on-ubuntu-14-10/
 # purgeしなくても大丈夫か？indicator packageはどうすれば？
+sudo apt-get install firewalld (0.4.0-1)
+
+
 sudo ufw status verbose
 sudo ufw enable
 sudo ufw default deny
@@ -21,13 +24,146 @@ sudo add-apt-repository ppa:ubuntu-mozilla-daily/firefox-aurora
 sudo add-apt-repository ppa:saiarcot895/myppa
 
 sudo apt-get purge unity-webapps-common　unity-scope-* unity-lens-video unity-scope-video-remote unity-lens-music unity-lens-photos -y
-sudo apt-get update ; sudo apt-get dist-upgrade -y
-sudo apt-get install apt-fast aria2 tasksel apt-show-versions
+sudo apt-get update
+sudo apt-get install apt-fast aria2 tasksel firewalld libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev
+  
 sudo wget https://raw.githubusercontent.com/neplus/config/master/etc/apt-fast.conf -O /etc/apt-fast.conf
-sudo apt-fast install kubuntu-desktop aptitude aria2 apt-btrfs-snapshot bleachbit btrfs-tools build-essential byobu ca-certificates chkrootkit comix curl fbterm fcitx-mozc flashplugin-installer fonts-inconsolata fonts-takao g++ gdisk glances gparted hdparm htop krita jhead procps glances kate kde-baseapps kde-base-artwork kde-l10n-ja ktorrent language-pack-kde-ja language-pack-gnome-ja lib32z1 lib32ncurses5 lib32nss-mdns libdigest-whirlpool-perl libvirt-bin lm-sensors lynx mew mew-bin mozc-server mozc-utils-gui openssh-client p7zip-rar p7zip-full parted prelink preload privoxy procps pwgen python-software-properties qemu-kvm rsync smartmontools stunnel4 testdisk tmux tor tree ubuntu-restricted-extras ufw unzip unrar uim-fep uim-xim vidalia vim-nox virt-manager vlc xclip wine zram-config -y
-ncurses-dev libncurses5-dev gettext autoconf ubuntu-defaults-ja ppa-purge
 
-# $HOME/.fontsにコピーを忘れずに
+# install fish
+
+
+#install git 
+cd /usr/local/src;pwd
+aria2c https://www.kernel.org/pub/software/scm/git/git-2.8.3.tar.xz
+tar -zxf git-*.tar.gz
+cd git-*
+make configure
+./configure --prefix=/usr/local/
+make all doc info
+sudo make install install-doc install-html install-info
+
+# install etckeeper
+
+#install apt-fast
+cd /usr/local/src;pwd
+git clone https://github.com/ilikenwf/apt-fast.git
+cd apt-fast
+sudo cp apt-fast /usr/bin/
+sudo chmod +x /usr/bin/apt-fast
+sudo cp apt-fast.conf /etc
+
+# back home
+cd $HOME;pwd
+
+#copy tools
+https://github.com/networkelements/gittool.git
+cd gittool
+chmod +x *.sh
+
+
+sudo apt-fast install aptitude aria2 apt-btrfs-snapshot bleachbit btrfs-tools build-essential byobu ca-certificates chkrootkit comix curl fbterm fcitx-mozc flashplugin-installer fonts-inconsolata fonts-takao g++ gdisk glances gparted hdparm htop krita jhead procps glances kate kde-baseapps kde-base-artwork kde-l10n-ja ktorrent language-pack-kde-ja language-pack-gnome-ja lib32z1 lib32ncurses5 libdigest-whirlpool-perl libvirt-bin lm-sensors lynx mew mew-bin mozc-server mozc-utils-gui openssh-client p7zip-rar p7zip-full parted prelink preload privoxy procps pwgen python-software-properties qemu-kvm rsync smartmontools stunnel4 testdisk tmux tor tree ubuntu-restricted-extras ufw unzip unrar uim-fep uim-xim vim-nox virt-manager vlc xclip wine zram-config libncurses5-dev gettext autoconf ubuntu-defaults-ja ppa-purge rkhunter openjdk-9-jdk qbittorrent emacs24-nox emacs-mozc keepassx tasksel aria2 firewalld clamav
+bash-completion chrony libssl-dev libtool libboost-all-dev pkg-config yasm
+
+
+#chinachu
+http://www.jifu-labo.net/2015/09/ubuntu_pre/
+
+#bash-completion chrony libssl-dev libtool libboost-all-dev pkg-config yasm
+sudo vi /etc/chrony/chrony.conf
+
+server ntp.nict.jp iburst minpoll 10 maxpoll 12
+server ntp.mita.keio.ac.jp iburst minpoll 10 maxpoll 12
+server ntp.sfc.keio.ac.jp iburst minpoll 10 maxpoll 12
+server ntp.nc.u-tokyo.ac.jp iburst minpoll 10 maxpoll 12
+server eric.nc.u-tokyo.ac.jp iburst minpoll 10 maxpoll 12
+server ntp.cablenet.ne.jp iburst minpoll 10 maxpoll 12
+
+
+sudo systemd status chrony.service
+
+
+mkdir ~/git
+cd ~/git
+git clone https://github.com/m-tsudo/pt3.git
+cd pt3
+make
+sudo make install
+ 
+#※ Ubuntu 15.04以降のバージョンでは以下を実行必須です。
+sudo vi /etc/modprobe.d/blacklist.conf 
+#デフォルトのearth-pt3ドライバと競合するため、ファイル末尾に下記を追記
+　   blacklist earth-pt3
+ 
+sudo reboot
+# 再起動後、ドライバモジュールがロードされているかを確認します。
+lsmod | grep pt3
+# 続いて、PT3のデバイスファイルが作成されていることを確認します。
+ls -l /dev/pt3*
+
+cd ~/git
+git clone https://github.com/stz2012/libarib25.git
+cd libarib25/
+make
+sudo make install
+sudo /sbin/ldconfig
+
+mkdir ~/src
+cd ~/src
+wget http://hg.honeyplanet.jp/pt1/archive/tip.tar.bz2
+tar xvjf tip.tar.bz2
+tar xvzf recpt1-http-rev4.tar.gz
+patch -p2 -d pt1-c8688d7d6382/recpt1/ < recpt1-http-rev4/recpt1-http.diff
+cd pt1-c8688d7d6382/recpt1/
+sed -i".org" 's/pt1video/pt3video/g' pt1_dev.h
+./autogen.sh
+./configure --enable-b25
+make
+sudo make install
+
+recpt1 --b25 --strip 27 10 ~/test.ts
+
+
+sudo adduser chinachu
+sudo -i -u chinachu
+git clone git://github.com/kanreisa/Chinachu.git ~/chinachu
+cd ~/chinachu
+./chinachu installer
+echo "[]" > rules.json
+cp config.sample.json config.json
+emacs config.json
+
+./chinachu service operator execute
+./chinachu update -f
+./chinachu service operator initscript > /tmp/chinachu-operator
+./chinachu service wui initscript > /tmp/chinachu-wui
+
+cd /tmp
+sudo chown root:root chinachu-*
+sudo chmod 755 chinachu-*
+sudo mv chinachu-* /etc/init.d/
+sudo update-rc.d chinachu-operator defaults
+sudo update-rc.d chinachu-wui defaults
+sudo service chinachu-operator start
+sudo service chinachu-wui start
+ps ax | grep chinachu
+
+sudo service chinachu-operator restart
+sudo service chinachu-wui restart
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+★# $HOME/.fontsにコピーを忘れずに
 
 # latest package
 * from official binary
@@ -48,7 +184,6 @@ https://www.passwordstore.org/          pass (1.6.5-3)                    || The
 etckeeper                              etckeeper (1.18.2-1ubuntu1
 
 
-
 * use apt-get
 rkhunter                               rkhunter (1.4.2-5)                 || https://sourceforge.net/projects/rkhunter/files/rkhunter/
 openjdk-7-jdk or 8 or 9                openjdk-9-jdk (9~b114-0ubuntu1)     
@@ -56,7 +191,8 @@ qbittorrent                            (3.3.1-1)                          || 3.3
 emacs24-nox emacs-mozc                    (24.5+1-6ubuntu1)               || wget http://public.p-knowledge.co.jp/gnu-mirror/emacs/emacs-24.5.tar.gz.sig
 ####http://postd.cc/linux-workstation-security-checklist-part1/
 keepassx                                (2.0.2)                           || https://github.com/keepassx/keepassx
-## https://www.clamav.net/downloads#collapseUbuntu
+https://www.clamav.net/downloads#collapseUbuntu                           ||    clamav-base (0.99+dfsg-1ubuntu1) clamav-freshclam (0.99+dfsg-1ubuntu1)    libclamav7 (0.99+dfsg-1ubuntu1)    clamav-docs (0.99+dfsg-1ubuntu1)   clamav (0.99+dfsg-1ubuntu1)   clamav-base (0.99+dfsg-1ubuntu1)   clamav-freshclam (0.99+dfsg-1ubuntu1)   libclamav7 (0.99+dfsg-1ubuntu1)
+
 
 * from github
 vimpager
