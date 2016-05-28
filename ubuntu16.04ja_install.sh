@@ -235,7 +235,7 @@ echo "[]" > rules.json
 cp config.sample.json config.json
 ---途中
 emacs config.json
-
+-------------
 ./chinachu service operator execute
 ./chinachu update -f
 ./chinachu service operator initscript > /tmp/chinachu-operator
@@ -270,7 +270,7 @@ sudo service chinachu-wui restart
 ★# $HOME/.fontsにコピーを忘れずに
 
 
-
+sudo apt-fast -f install libindicator7 libappindicator1
 sudo apt-get update ; sudo apt-get dist-upgrade -y
 sudo apt-get purge dragonplayer seahorse kwalletmanager totem cheese evolution-data-server-common evolution-data-server-online-accounts -y
 sudo apt-get autoclean
@@ -301,7 +301,7 @@ LANG=ja_JP.UTF-8 ; export LANG
 
 ★
 ## freshclam and make ramdisk
-sudo wget https://raw.githubusercontent.com/neplus/config/master/etc/rc.local -O /etc/rc.local
+sudo wget https://raw.githubusercontent.com/networkelements/config/master/etc/rc.local -O /etc/rc.local
 sudo mkdir /ramdisk
 sudo chmod 770 /ramdisk
 #chmod 777 /ramdisk;echo /dev/shm /ramdisk   tmpfs   size=8g 0   0 >> /etc/fstab;
@@ -310,7 +310,7 @@ sudo chmod 770 /ramdisk
 #crontab -e
 #59 * * * * clamav /usr/bin/freshclam -l /var/log/clamav/freshclam.log
 #30 * * * * clamav /usr/bin/freshclam --quiet -l /var/log/freshclam.log
-sudo wget https://raw.githubusercontent.com/neplus/config/master/etc/crontab -O /etc/crontab
+sudo wget https://raw.githubusercontent.com/networkelements/config/master/etc/crontab -O /etc/crontab
 crontab -l
 sudo /etc/init.d/cron restart
 
