@@ -2,6 +2,8 @@
 #script -a install_`date +%Y-%m-%d-%H:%M:%S`.log
 
 # change to firewalld
+#  http://linuxbsdos.com/2014/10/24/replace-ufw-with-firewalld-on-ubuntu-14-10/
+# purgeしなくても大丈夫か？indicator packageはどうすれば？
 sudo ufw status verbose
 sudo ufw enable
 sudo ufw default deny
