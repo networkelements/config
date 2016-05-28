@@ -20,35 +20,49 @@ sudo add-apt-repository ppa:ubuntu-mozilla-daily/firefox-aurora
 ###https://github.com/ilikenwf/apt-fast
 sudo add-apt-repository ppa:saiarcot895/myppa
 
-sudo apt-get purge unity-scope-* unity-lens-video unity-scope-video-remote unity-lens-music unity-lens-photos -y
+sudo apt-get purge unity-webapps-common　unity-scope-* unity-lens-video unity-scope-video-remote unity-lens-music unity-lens-photos -y
 sudo apt-get update ; sudo apt-get dist-upgrade -y
 sudo apt-get install apt-fast aria2 tasksel apt-show-versions
 sudo wget https://raw.githubusercontent.com/neplus/config/master/etc/apt-fast.conf -O /etc/apt-fast.conf
 sudo apt-fast install kubuntu-desktop aptitude aria2 apt-btrfs-snapshot bleachbit btrfs-tools build-essential byobu ca-certificates chkrootkit comix curl fbterm fcitx-mozc flashplugin-installer fonts-inconsolata fonts-takao g++ gdisk glances gparted hdparm htop krita jhead procps glances kate kde-baseapps kde-base-artwork kde-l10n-ja ktorrent language-pack-kde-ja language-pack-gnome-ja lib32z1 lib32ncurses5 lib32nss-mdns libdigest-whirlpool-perl libvirt-bin lm-sensors lynx mew mew-bin mozc-server mozc-utils-gui openssh-client p7zip-rar p7zip-full parted prelink preload privoxy procps pwgen python-software-properties qemu-kvm rsync smartmontools stunnel4 testdisk tmux tor tree ubuntu-restricted-extras ufw unzip unrar uim-fep uim-xim vidalia vim-nox virt-manager vlc xclip wine zram-config -y
+ncurses-dev libncurses5-dev gettext autoconf ubuntu-defaults-ja ppa-purge
 
 # $HOME/.fontsにコピーを忘れずに
 
 # latest package
-etckeeper?
-stack haskell
+* from official binary
+btsync
+consul
+git                                       (1:2.7.4-0ubuntu1)              ||  wget https://www.kernel.org/pub/software/scm/git/git-2.8.3.tar.xz
+docker                                    (1.5-1)                         || 1.11.1 https://github.com/docker/docker/blob/master/CHANGELOG.md curl -fsSL https://get.docker.com/gpg | sudo apt-key add -
+virtualbox oracle official             (5.0.18-dfsg-2build1)              || http://download.virtualbox.org/virtualbox/5.0.20/virtualbox-5.0_5.0.20-106931~Ubuntu~xenial_amd64.deb
+
+* cant use apt-get ? use official binary?
+vagrant                                vagrant (1.8.1+dfsg-1)             || wget https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.deb ; sudo dpkg -i vagrant*.deb
+'''
+sudo apt-get -sV install vagrant | grep virt
+   virtualbox (5.0.18-dfsg-2build1)
+'''
+
+https://www.passwordstore.org/          pass (1.6.5-3)                    || The latest version is 1.6.5.
+etckeeper                              etckeeper (1.18.2-1ubuntu1
 
 
-rkhunter
+
+* use apt-get
+rkhunter                               rkhunter (1.4.2-5)                 || https://sourceforge.net/projects/rkhunter/files/rkhunter/
+openjdk-7-jdk or 8 or 9                openjdk-9-jdk (9~b114-0ubuntu1)     
+qbittorrent                            (3.3.1-1)                          || 3.3.4
+emacs24-nox emacs-mozc                    (24.5+1-6ubuntu1)               || wget http://public.p-knowledge.co.jp/gnu-mirror/emacs/emacs-24.5.tar.gz.sig
+####http://postd.cc/linux-workstation-security-checklist-part1/
+keepassx                                (2.0.2)                           || https://github.com/keepassx/keepassx
+## https://www.clamav.net/downloads#collapseUbuntu
+
+* from github
 vimpager
 netdata
-openjdk-7-jdk or 8?
-qbtorrent
-vagrant
-virtualbox oracle official 
-btsync
-fish
-git
-emacs24-nox emacs-mozc
-docker
-####http://postd.cc/linux-workstation-security-checklist-part1/
-keepass2 or keepassx 
-https://www.passwordstore.org/
-## https://www.clamav.net/downloads#collapseUbuntu
+stack haskell
+fish                                      fish-common (2.2.0-3)           || https://github.com/fish-shell/fish-shell 2.3.0, released April 22, 2016
 
 
 
