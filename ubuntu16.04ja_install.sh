@@ -1,6 +1,8 @@
   #!/bin/sh
 #script -a install_`date +%Y-%m-%d-%H:%M:%S`.log
 date
+#download  http://www1.axfc.net/u/3606217?key=UNAUNA to $HOME/
+
 # change to firewalld
 #  http://linuxbsdos.com/2014/10/24/replace-ufw-with-firewalld-on-ubuntu-14-10/
 # purgeしなくても大丈夫か？indicator packageはどうすれば？
@@ -76,7 +78,7 @@ fish --version
 FISHPATH=`which fish`
 chsh -s $FISHPATH
 #上記でダメなら追記してからもう一度chsh -sする(スクリプト自体にroot権限が必要？)
-#sudo echo $FISHPATH >> /etc/shells
+#sudo sh -c "echo $FISHPATH >> /etc/shells"
 # chsh -s $FISHPATH
 
 # logoutしないとかわらない？fishのパスをつけ間違えるとログインできなくなるのでほかにユーザを作ってからsu -ほげ　したほうが良い？
@@ -124,6 +126,15 @@ sudo make install
 #make[1]: ディレクトリ '/usr/local/src/git-2.8.3/Documentation' から出ます
 #Makefile:2366: ターゲット 'install-doc' のレシピで失敗しました
 #```
+#http://dqn.sakusakutto.jp/2013/06/git-install-man-doc.html
+#http://stackoverflow.com/questions/897477/installing-git-on-os-x
+sudo aria2c https://www.kernel.org/pub/software/scm/git/git-manpages-2.8.3.tar.xz
+sudo mkdir /usr/local/git-manpages-2.8.3
+sudo tar Jxvf git-manpages-2.8.3.tar.xz -C /usr/local/git-manpages-2.8.3
+export MANPATH="/usr/local/git-manpages-2.8.3:$MANPATH"
+git log --help
+
+
 #-----------------------------------------------------------------------------------------------------------------------
 
 # back home
@@ -151,8 +162,7 @@ sudo wget https://raw.githubusercontent.com/networkelements/config/master/etc/ap
 # back home
 cd $HOME;pwd
 
-sudo apt-fast install aptitude aria2 apt-btrfs-snapshot bleachbit btrfs-tools build-essential byobu ca-certificates chkrootkit comix curl fbterm fcitx-mozc flashplugin-installer fonts-inconsolata fonts-takao g++ gdisk glances gparted hdparm htop krita jhead procps glances kate kde-baseapps kde-base-artwork kde-l10n-ja ktorrent language-pack-kde-ja language-pack-gnome-ja lib32z1 lib32ncurses5 libdigest-whirlpool-perl libvirt-bin lm-sensors lynx mew mew-bin mozc-server mozc-utils-gui openssh-client p7zip-rar p7zip-full parted prelink preload privoxy procps pwgen python-software-properties qemu-kvm rsync smartmontools stunnel4 testdisk tmux tor tree ubuntu-restricted-extras ufw unzip unrar uim-fep uim-xim vim-nox virt-manager vlc xclip wine zram-config gettext ubuntu-defaults-ja ppa-purge rkhunter openjdk-9-jdk qbittorrent emacs24-nox emacs-mozc keepassx tasksel aria2 firewalld clamav bash-completion chrony libssl-dev libtool libboost-all-dev pkg-config yasm
-
+sudo apt-fast install aptitude aria2 apt-btrfs-snapshot bleachbit btrfs-tools build-essential byobu ca-certificates chkrootkit comix curl fbterm fcitx-mozc flashplugin-installer fonts-inconsolata fonts-takao g++ gdisk glances gparted hdparm htop krita jhead procps glances kate kde-baseapps kde-base-artwork kde-l10n-ja ktorrent language-pack-kde-ja language-pack-gnome-ja lib32z1 lib32ncurses5 libdigest-whirlpool-perl libvirt-bin lm-sensors lynx mew mew-bin mozc-server mozc-utils-gui openssh-client p7zip-rar p7zip-full parted prelink preload privoxy procps pwgen python-software-properties qemu-kvm rsync smartmontools stunnel4 testdisk tmux tor tree ubuntu-restricted-extras ufw unzip unrar uim-fep uim-xim vim-nox virt-manager vlc xclip wine zram-config gettext ubuntu-defaults-ja ppa-purge rkhunter openjdk-9-jdk qbittorrent emacs24-nox emacs-mozc keepassx tasksel aria2 firewalld clamav bash-completion chrony libssl-dev libtool libboost-all-dev pkg-config yasm pcscd libpcsclite1 libpcsclite-dev libccid pcsc-tools
 
 #chinachu
 ###http://www.jifu-labo.net/2015/09/ubuntu_pre/
@@ -167,40 +177,44 @@ server ntp.nc.u-tokyo.ac.jp iburst minpoll 10 maxpoll 12
 server eric.nc.u-tokyo.ac.jp iburst minpoll 10 maxpoll 12
 server ntp.cablenet.ne.jp iburst minpoll 10 maxpoll 12
 
+sudo systemctl status chrony.service
+sudo systemctl restart chrony.service
 
-sudo systemd status chrony.service
-
-
+cd $HOME;pwd
 mkdir ~/git
-cd ~/git
+cd ~/git;pwd
 git clone https://github.com/m-tsudo/pt3.git
 cd pt3
 make
 sudo make install
  
 #※ Ubuntu 15.04以降のバージョンでは以下を実行必須です。
-sudo vi /etc/modprobe.d/blacklist.conf 
+#sudo emacs /etc/modprobe.d/blacklist.conf 
 #デフォルトのearth-pt3ドライバと競合するため、ファイル末尾に下記を追記
-　   blacklist earth-pt3
- 
+#　   blacklist earth-pt3
+sudo sh -c "echo blacklist earth-pt3 >> /etc/modprobe.d/blacklist.conf"
+
 sudo reboot
 # 再起動後、ドライバモジュールがロードされているかを確認します。
 lsmod | grep pt3
 # 続いて、PT3のデバイスファイルが作成されていることを確認します。
 ls -l /dev/pt3*
 
-cd ~/git
+cd ~/git;pwd
 git clone https://github.com/stz2012/libarib25.git
 cd libarib25/
 make
 sudo make install
 sudo /sbin/ldconfig
 
+cd ~/git;pwd
 mkdir ~/src
-cd ~/src
+cd ~/src;pwd
 wget http://hg.honeyplanet.jp/pt1/archive/tip.tar.bz2
 tar xvjf tip.tar.bz2
-tar xvzf recpt1-http-rev4.tar.gz
+# browser download http://www1.axfc.net/u/3606217?key=UNAUNA
+#tar xvzf recpt1-http-rev4.tar.gz
+
 patch -p2 -d pt1-c8688d7d6382/recpt1/ < recpt1-http-rev4/recpt1-http.diff
 cd pt1-c8688d7d6382/recpt1/
 sed -i".org" 's/pt1video/pt3video/g' pt1_dev.h
@@ -215,10 +229,11 @@ recpt1 --b25 --strip 27 10 ~/test.ts
 sudo adduser chinachu
 sudo -i -u chinachu
 git clone git://github.com/kanreisa/Chinachu.git ~/chinachu
-cd ~/chinachu
+cd ~/chinachu;pwd
 ./chinachu installer
 echo "[]" > rules.json
 cp config.sample.json config.json
+---途中
 emacs config.json
 
 ./chinachu service operator execute
